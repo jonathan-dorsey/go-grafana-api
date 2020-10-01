@@ -1,8 +1,9 @@
 package gapi
 
 import (
-	"github.com/gobs/pretty"
 	"testing"
+
+	"github.com/gobs/pretty"
 )
 
 const (
@@ -158,9 +159,12 @@ func TestAddTeam(t *testing.T) {
 	name := "TestTeam"
 	email := ""
 
-	err := client.AddTeam(name, email)
+	id, err := client.AddTeam(name, email)
 	if err != nil {
 		t.Error(err)
+	}
+	if id != 2 {
+		t.Error("AddTeam returned an invalid id.")
 	}
 }
 
